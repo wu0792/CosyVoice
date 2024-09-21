@@ -17,7 +17,7 @@ import requests
 import torch
 import torchaudio
 import numpy as np
-
+import os
 
 def main():
     url = "http://{}:{}/inference_{}".format(args.host, args.port, args.mode)
@@ -65,7 +65,7 @@ if __name__ == "__main__":
                         type=int,
                         default='50000')
     parser.add_argument('--mode',
-                        default='sft',
+                        default='cross_lingual',
                         choices=['sft', 'zero_shot', 'cross_lingual', 'instruct'],
                         help='request mode')
     parser.add_argument('--tts_text',
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                         default='希望你以后能够做的比我还好呦。')
     parser.add_argument('--prompt_wav',
                         type=str,
-                        default='../../../zero_shot_prompt.wav')
+                        default='./zero_shot_prompt.wav')
     parser.add_argument('--instruct_text',
                         type=str,
                         default='Theo \'Crimson\', is a fiery, passionate rebel leader. \

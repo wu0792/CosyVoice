@@ -68,6 +68,9 @@ async def inference_instruct(tts_text: str = Form(), spk_id: str = Form(), instr
     model_output = cosyvoice.inference_instruct(tts_text, spk_id, instruct_text)
     return StreamingResponse(generate_data(model_output))
 
+@app.get("/")
+async def root():
+    return {"message": "Welcome to CosyVoice!"}
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
